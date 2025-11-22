@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Congratulations!</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #1e3c72, #2a5298);
+        color: white;
+        font-family: 'Arial', sans-serif;
+        overflow: hidden;
+        text-align: center;
+    }
+    h1 {
+        font-size: 3.5em;
+        margin-top: 15vh;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+        from { text-shadow: 0 0 10px #fff, 0 0 20px #ff0, 0 0 30px #ff0; }
+        to { text-shadow: 0 0 20px #fff, 0 0 30px #ff0, 0 0 40px #ff0; }
+    }
+    p {
+        font-size: 1.8em;
+        margin-top: 20px;
+    }
+    .lower-text {
+        position: fixed;
+        bottom: 15vh;
+        width: 100%;
+        font-size: 1.8em;
+        line-height: 1.5em;
+    }
+    .snowflake {
+        position: fixed;
+        top: -10px;
+        color: white;
+        font-size: 1.5em;
+        animation: fall linear infinite;
+    }
+    @keyframes fall {
+        to { transform: translateY(100vh); }
+    }
+    .firework {
+        position: fixed;
+        width: 6px;
+        height: 6px;
+        background: #fff;
+        border-radius: 50%;
+        animation: explode 1s ease-out forwards;
+    }
+    @keyframes explode {
+        0% { transform: scale(1); opacity: 1; }
+        100% { transform: scale(50); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+    <h1>🎉 Congratulations! 🎉</h1>
+    <p>You’ve completed the ultimate Turing Trail Quest.</p>
+    <p><strong>Well done!</strong></p>
+
+    <div class='lower-text'>
+        <p>Your Name has been entered into the Christmas Bonus Draw.</p>
+        <p><strong>Good Luck!</strong></p>
+    </div>
+
+    <script>
+        // Snowfall effect
+        const snowflakeCount = 50;
+        for (let i = 0; i < snowflakeCount; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            snowflake.style.fontSize = (Math.random() * 1.5 + 1) + 'em';
+            document.body.appendChild(snowflake);
+        }
+
+        // Fireworks effect
+        function createFirework() {
+            const firework = document.createElement('div');
+            firework.classList.add('firework');
+            firework.style.left = Math.random() * window.innerWidth + 'px';
+            firework.style.top = Math.random() * window.innerHeight + 'px';
+            firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            document.body.appendChild(firework);
+            setTimeout(() => firework.remove(), 1000);
+        }
+        setInterval(createFirework, 500);
+    </script>
+</body>
+</html>
